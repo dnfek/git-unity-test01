@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Game : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,12 +15,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float a = Input.GetAxis("Horizontal");
+        float a = Input.GetAxis("Mouse Y");
         float b = Input.GetAxis("Vertical");
-        a = a * speed * Time.deltaTime;
+        float c = Input.GetAxis("Horizontal");
+        a = a * speed * Time.deltaTime * 10;
         b = b * speed * Time.deltaTime;
-        transform.Translate(Vector3.left * a);
-        transform.Translate(Vector3.up * b);
+        c = c * speed * Time.deltaTime;
+        transform.Translate(Vector3.up * a);
+        transform.Translate(Vector3.forward * b);
+        transform.Translate(Vector3.left * c);
         //transform.Translate(Vector3.up / 100);
     }
 }
